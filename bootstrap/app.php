@@ -19,6 +19,10 @@ return Application::configure(basePath: dirname(__DIR__))
             Illuminate\Foundation\Http\Middleware\ValidateCsrfToken::class,
             Illuminate\Routing\Middleware\SubstituteBindings::class,
         ]);
+
+        $middleware->redirectTo(
+            users: fn () => auth()->user()->getRedirectUrl(),
+        );
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
