@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->registerJsonGroupMacro();
+        $this->registerJsonGroup();
     }
 
     /**
@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    private function registerJsonGroupMacro(): void
+    private function registerJsonGroup(): void
     {
         Route::macro('jsonGroup', function (string $prefix, string $controller, array $methods) {
             Route::prefix($prefix)->name($prefix.'.')->group(function () use ($controller, $methods) {
